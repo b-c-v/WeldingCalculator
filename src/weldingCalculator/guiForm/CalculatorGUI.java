@@ -1857,10 +1857,10 @@ public class CalculatorGUI extends JFrame {
         return l;
     }
 
-    //if gap is 0 then in formulas b=0.1. При сварке зазор между деталями может составлять 0 мм, но тогда будет ошибка в расчете
+    //if gap is 0 then in formulas b=0.5. При сварке зазор между деталями может составлять 0 мм, но тогда будет ошибка в расчете
     private double sizeB(double sizeB) {
         if (sizeB == 0) {
-            sizeB = 0.1;
+            sizeB = 0.5;
         }
         return sizeB;
     }
@@ -1879,368 +1879,185 @@ public class CalculatorGUI extends JFrame {
     }
 
     //Изменение отображение полей в зависимости от выбранной вкладки
-    private void setVisibility(JLabel label, JSpinner spinner, boolean b) {
-        label.setVisible(b);
-        spinner.setVisible(b);
+    //21.02.19 для сокращения строк кода добавил 2 новых метода с ...
+    private void setVisibilityLabel(boolean b, JLabel... label) {
+        for (JLabel l : label) {
+            l.setVisible(b);
+        }
     }
 
+    private void setVisibilitySpinner(boolean b, JSpinner... spinner) {
+        for (JSpinner s : spinner) {
+            s.setVisible(b);
+        }
+    }
 
     private void visibility_S_b_e_g() {
-        setVisibility(s, sizeS, true);
-        setVisibility(b, sizeB, true);
-        setVisibility(e, sizeE, true);
-        setVisibility(g, sizeG, true);
+        setVisibilityLabel(true, s, b, e, g);
+        setVisibilitySpinner(true, sizeS, sizeB, sizeE, sizeG);
 
-        setVisibility(g1, sizeG1, false);
-        setVisibility(e1, sizeE1, false);
-        setVisibility(c, sizeC, false);
-        setVisibility(h, sizeH, false);
-        setVisibility(r, sizeR, false);
-        setVisibility(alpha, sizeAlpha, false);
-        setVisibility(beta, sizeBeta, false);
-        setVisibility(k, sizeK, false);
-        setVisibility(k1, sizeK1, false);
-
+        setVisibilityLabel(false, g1, e1, c, h, r, alpha, beta, k, k1);
+        setVisibilitySpinner(false, sizeG1, sizeE1, sizeC, sizeH, sizeR, sizeAlpha, sizeBeta, sizeK, sizeK1);
     }
 
     private void visibility_S_b_e_g_R() {
-        setVisibility(s, sizeS, true);
-        setVisibility(b, sizeB, true);
-        setVisibility(e, sizeE, true);
-        setVisibility(g, sizeG, true);
-        setVisibility(r, sizeR, true);
+        setVisibilityLabel(true, s, b, e, g, r);
+        setVisibilitySpinner(true, sizeS, sizeB, sizeE, sizeG, sizeR);
 
-        setVisibility(g1, sizeG1, false);
-        setVisibility(e1, sizeE1, false);
-        setVisibility(c, sizeC, false);
-        setVisibility(h, sizeH, false);
-        setVisibility(alpha, sizeAlpha, false);
-        setVisibility(beta, sizeBeta, false);
-        setVisibility(k, sizeK, false);
-        setVisibility(k1, sizeK1, false);
+        setVisibilityLabel(false, g1, e1, c, h, alpha, beta, k, k1);
+        setVisibilitySpinner(false, sizeG1, sizeE1, sizeC, sizeH, sizeAlpha, sizeBeta, sizeK, sizeK1);
     }
 
     private void visibility_S_b_e_g_alpha() {
-        setVisibility(s, sizeS, true);
-        setVisibility(b, sizeB, true);
-        setVisibility(e, sizeE, true);
-        setVisibility(g, sizeG, true);
-        setVisibility(alpha, sizeAlpha, true);
+        setVisibilityLabel(true, s, b, e, g, alpha);
+        setVisibilitySpinner(true, sizeS, sizeB, sizeE, sizeG, sizeAlpha);
 
-        setVisibility(c, sizeC, false);
-        setVisibility(e1, sizeE1, false);
-        setVisibility(g1, sizeG1, false);
-        setVisibility(h, sizeH, false);
-        setVisibility(r, sizeR, false);
-        setVisibility(beta, sizeBeta, false);
-        setVisibility(k, sizeK, false);
-        setVisibility(k1, sizeK1, false);
+        setVisibilityLabel(false, g1, e1, c, h, r, beta, k, k1);
+        setVisibilitySpinner(false, sizeG1, sizeE1, sizeC, sizeH, sizeR, sizeBeta, sizeK, sizeK1);
     }
 
     private void visibility_S_b_e_g_c() {
-        setVisibility(s, sizeS, true);
-        setVisibility(b, sizeB, true);
-        setVisibility(e, sizeE, true);
-        setVisibility(g, sizeG, true);
-        setVisibility(c, sizeC, true);
+        setVisibilityLabel(true, s, b, e, g, c);
+        setVisibilitySpinner(true, sizeS, sizeB, sizeE, sizeG, sizeC);
 
-        setVisibility(e1, sizeE1, false);
-        setVisibility(g1, sizeG1, false);
-        setVisibility(h, sizeH, false);
-        setVisibility(r, sizeR, false);
-        setVisibility(alpha, sizeAlpha, false);
-        setVisibility(beta, sizeBeta, false);
-        setVisibility(k, sizeK, false);
-        setVisibility(k1, sizeK1, false);
+        setVisibilityLabel(false, g1, e1, h, r, alpha, beta, k, k1);
+        setVisibilitySpinner(false, sizeG1, sizeE1, sizeH, sizeR, sizeAlpha, sizeBeta, sizeK, sizeK1);
     }
 
     private void visibility_S_b_e_g_c_K() {
-        setVisibility(s, sizeS, true);
-        setVisibility(b, sizeB, true);
-        setVisibility(e, sizeE, true);
-        setVisibility(g, sizeG, true);
-        setVisibility(c, sizeC, true);
-        setVisibility(k, sizeK, true);
+        setVisibilityLabel(true, s, b, e, g, c, k);
+        setVisibilitySpinner(true, sizeS, sizeB, sizeE, sizeG, sizeC, sizeK);
 
-        setVisibility(e1, sizeE1, false);
-        setVisibility(g1, sizeG1, false);
-        setVisibility(h, sizeH, false);
-        setVisibility(r, sizeR, false);
-        setVisibility(alpha, sizeAlpha, false);
-        setVisibility(beta, sizeBeta, false);
-        setVisibility(k1, sizeK1, false);
+        setVisibilityLabel(false, g1, e1, h, r, alpha, beta, k1);
+        setVisibilitySpinner(false, sizeG1, sizeE1, sizeH, sizeR, sizeAlpha, sizeBeta, sizeK1);
     }
 
     private void visibility_S_b_e_g_c_alpha() {
-        setVisibility(s, sizeS, true);
-        setVisibility(b, sizeB, true);
-        setVisibility(e, sizeE, true);
-        setVisibility(g, sizeG, true);
-        setVisibility(c, sizeC, true);
-        setVisibility(alpha, sizeAlpha, true);
+        setVisibilityLabel(true, s, b, e, g, c, alpha);
+        setVisibilitySpinner(true, sizeS, sizeB, sizeE, sizeG, sizeC, sizeAlpha);
 
-        setVisibility(e1, sizeE1, false);
-        setVisibility(g1, sizeG1, false);
-        setVisibility(h, sizeH, false);
-        setVisibility(r, sizeR, false);
-        setVisibility(beta, sizeBeta, false);
-        setVisibility(k, sizeK, false);
-        setVisibility(k1, sizeK1, false);
+        setVisibilityLabel(false, g1, e1, h, r, beta, k, k1);
+        setVisibilitySpinner(false, sizeG1, sizeE1, sizeH, sizeR, sizeBeta, sizeK, sizeK1);
     }
 
     private void visibility_S_b_e_g_c_K_alpha() {
-        setVisibility(s, sizeS, true);
-        setVisibility(b, sizeB, true);
-        setVisibility(e, sizeE, true);
-        setVisibility(g, sizeG, true);
-        setVisibility(c, sizeC, true);
-        setVisibility(k, sizeK, true);
-        setVisibility(alpha, sizeAlpha, true);
+        setVisibilityLabel(true, s, b, e, g, c, k, alpha);
+        setVisibilitySpinner(true, sizeS, sizeB, sizeE, sizeG, sizeC, sizeK, sizeAlpha);
 
-        setVisibility(e1, sizeE1, false);
-        setVisibility(g1, sizeG1, false);
-        setVisibility(h, sizeH, false);
-        setVisibility(r, sizeR, false);
-        setVisibility(beta, sizeBeta, false);
-        setVisibility(k1, sizeK1, false);
+        setVisibilityLabel(false, g1, e1, h, r, beta, k1);
+        setVisibilitySpinner(false, sizeG1, sizeE1, sizeH, sizeBeta, sizeK1);
     }
 
     private void visibility_S_b_e_g_c_K_R_alpha() {
-        setVisibility(s, sizeS, true);
-        setVisibility(b, sizeB, true);
-        setVisibility(e, sizeE, true);
-        setVisibility(g, sizeG, true);
-        setVisibility(c, sizeC, true);
-        setVisibility(k, sizeK, true);
-        setVisibility(r, sizeR, true);
-        setVisibility(alpha, sizeAlpha, true);
+        setVisibilityLabel(true, s, b, e, g, c, k, r, alpha);
+        setVisibilitySpinner(true, sizeS, sizeB, sizeE, sizeG, sizeC, sizeK, sizeR, sizeAlpha);
 
-        setVisibility(e1, sizeE1, false);
-        setVisibility(g1, sizeG1, false);
-        setVisibility(h, sizeH, false);
-        setVisibility(beta, sizeBeta, false);
-        setVisibility(k1, sizeK1, false);
+        setVisibilityLabel(false, g1, e1, h, beta, k1);
+        setVisibilitySpinner(false, sizeG1, sizeE1, sizeH, sizeBeta, sizeK1);
     }
 
     private void visibility_S_b_e_g_c_h_alpha_beta() {
-        setVisibility(s, sizeS, true);
-        setVisibility(b, sizeB, true);
-        setVisibility(e, sizeE, true);
-        setVisibility(g, sizeG, true);
-        setVisibility(c, sizeC, true);
-        setVisibility(h, sizeH, true);
-        setVisibility(alpha, sizeAlpha, true);
-        setVisibility(beta, sizeBeta, true);
+        setVisibilityLabel(true, s, b, e, g, c, h, alpha, beta);
+        setVisibilitySpinner(true, sizeS, sizeB, sizeE, sizeG, sizeC, sizeH, sizeAlpha, sizeBeta);
 
-        setVisibility(e1, sizeE1, false);
-        setVisibility(g1, sizeG1, false);
-        setVisibility(r, sizeR, false);
-        setVisibility(k, sizeK1, false);
-        setVisibility(k1, sizeK1, false);
+        setVisibilityLabel(false, g1, e1, r, k, k1);
+        setVisibilitySpinner(false, sizeG1, sizeE1, sizeR, sizeK, sizeK1);
     }
 
     private void visibility_S_b_e_g_c_R_alpha() {
-        setVisibility(s, sizeS, true);
-        setVisibility(b, sizeB, true);
-        setVisibility(e, sizeE, true);
-        setVisibility(g, sizeG, true);
-        setVisibility(c, sizeC, true);
-        setVisibility(r, sizeR, true);
-        setVisibility(alpha, sizeAlpha, true);
+        setVisibilityLabel(true, s, b, e, g, c, r, alpha);
+        setVisibilitySpinner(true, sizeS, sizeB, sizeE, sizeG, sizeC, sizeR, sizeAlpha);
 
-        setVisibility(e1, sizeE1, false);
-        setVisibility(g1, sizeG1, false);
-        setVisibility(h, sizeH, false);
-        setVisibility(beta, sizeBeta, false);
-        setVisibility(k, sizeK, false);
-        setVisibility(k1, sizeK1, false);
+        setVisibilityLabel(false, g1, e1, h, beta, k, k1);
+        setVisibilitySpinner(false, sizeG1, sizeE1, sizeH, sizeBeta, sizeK, sizeK1);
     }
 
     private void visibility_S_b_e_g_e1_g1() {
-        setVisibility(s, sizeS, true);
-        setVisibility(b, sizeB, true);
-        setVisibility(e, sizeE, true);
-        setVisibility(g, sizeG, true);
-        setVisibility(e1, sizeE1, true);
-        setVisibility(g1, sizeG1, true);
+        setVisibilityLabel(true, s, b, e, g, e1, g1);
+        setVisibilitySpinner(true, sizeS, sizeB, sizeE, sizeG, sizeE1, sizeG1);
 
-        setVisibility(c, sizeC, false);
-        setVisibility(h, sizeH, false);
-        setVisibility(r, sizeR, false);
-        setVisibility(alpha, sizeAlpha, false);
-        setVisibility(beta, sizeBeta, false);
-        setVisibility(k, sizeK, false);
-        setVisibility(k1, sizeK1, false);
+        setVisibilityLabel(false, c, h, r, alpha, beta, k, k1);
+        setVisibilitySpinner(false, sizeC, sizeH, sizeR, sizeAlpha, sizeBeta, sizeK, sizeK1);
     }
 
     private void visibility_S_b_e_g_e1_g1_h_k() {
-        setVisibility(s, sizeS, true);
-        setVisibility(b, sizeB, true);
-        setVisibility(e, sizeE, true);
-        setVisibility(g, sizeG, true);
-        setVisibility(e1, sizeE1, true);
-        setVisibility(g1, sizeG1, true);
-        setVisibility(h, sizeH, true);
-        setVisibility(k, sizeK, true);
+        setVisibilityLabel(true, s, b, e, g, e1, g1, h, k);
+        setVisibilitySpinner(true, sizeS, sizeB, sizeE, sizeG, sizeE1, sizeG1, sizeH, sizeK);
 
-        setVisibility(r, sizeR, false);
-        setVisibility(c, sizeC, false);
-        setVisibility(alpha, sizeAlpha, false);
-        setVisibility(beta, sizeBeta, false);
-        setVisibility(k1, sizeK1, false);
+        setVisibilityLabel(false, c, r, alpha, beta, k1);
+        setVisibilitySpinner(false, sizeC, sizeR, sizeAlpha, sizeBeta, sizeK1);
     }
 
     private void visibility_S_b_e_g_e1_g1_c_alpha() {
-        setVisibility(s, sizeS, true);
-        setVisibility(b, sizeB, true);
-        setVisibility(e, sizeE, true);
-        setVisibility(g, sizeG, true);
-        setVisibility(e1, sizeE1, true);
-        setVisibility(g1, sizeG1, true);
-        setVisibility(c, sizeC, true);
-        setVisibility(alpha, sizeAlpha, true);
+        setVisibilityLabel(true, s, b, e, g, e1, g1, c, alpha);
+        setVisibilitySpinner(true, sizeS, sizeB, sizeE, sizeG, sizeE1, sizeG1, sizeC, sizeAlpha);
 
-        setVisibility(h, sizeH, false);
-        setVisibility(r, sizeR, false);
-        setVisibility(beta, sizeBeta, false);
-        setVisibility(k, sizeK, false);
-        setVisibility(k1, sizeK1, false);
+        setVisibilityLabel(false, h, r, beta, k, k1);
+        setVisibilitySpinner(false, sizeH, sizeR, sizeBeta, sizeK, sizeK1);
     }
 
     private void visibility_S_b_e_g_e1_g1_c_r_alpha() {
-        setVisibility(s, sizeS, true);
-        setVisibility(b, sizeB, true);
-        setVisibility(e, sizeE, true);
-        setVisibility(g, sizeG, true);
-        setVisibility(e1, sizeE1, true);
-        setVisibility(g1, sizeG1, true);
-        setVisibility(c, sizeC, true);
-        setVisibility(r, sizeR, true);
-        setVisibility(alpha, sizeAlpha, true);
+        setVisibilityLabel(true, s, b, e, g, e1, g1, c, r, alpha);
+        setVisibilitySpinner(true, sizeS, sizeB, sizeE, sizeG, sizeE1, sizeG1, sizeC, sizeR, sizeAlpha);
 
-        setVisibility(h, sizeH, false);
-        setVisibility(beta, sizeBeta, false);
-        setVisibility(k, sizeK, false);
-        setVisibility(k1, sizeK1, false);
+        setVisibilityLabel(false, h, beta, k, k1);
+        setVisibilitySpinner(false, sizeH, sizeBeta, sizeK, sizeK1);
     }
 
     private void visibility_S_b_e_g_e1_g1_c_h_k_alpha() {
-        setVisibility(s, sizeS, true);
-        setVisibility(b, sizeB, true);
-        setVisibility(e, sizeE, true);
-        setVisibility(g, sizeG, true);
-        setVisibility(e1, sizeE1, true);
-        setVisibility(g1, sizeG1, true);
-        setVisibility(c, sizeC, true);
-        setVisibility(h, sizeH, true);
-        setVisibility(k, sizeK, true);
-        setVisibility(alpha, sizeAlpha, true);
+        setVisibilityLabel(true, s, b, e, g, e1, g1, c, h, k, alpha);
+        setVisibilitySpinner(true, sizeS, sizeB, sizeE, sizeG, sizeE1, sizeG1, sizeC, sizeH, sizeK, sizeAlpha);
 
-        setVisibility(r, sizeR, false);
-        setVisibility(k1, sizeK1, false);
-        setVisibility(beta, sizeBeta, false);
+        setVisibilityLabel(false, r, beta, k1);
+        setVisibilitySpinner(false, sizeR, sizeBeta, sizeK1);
     }
 
     private void visibility_S_b_e_g_e1_g1_c_h_alpha_beta() {
-        setVisibility(s, sizeS, true);
-        setVisibility(b, sizeB, true);
-        setVisibility(e, sizeE, true);
-        setVisibility(g, sizeG, true);
-        setVisibility(e1, sizeE1, true);
-        setVisibility(g1, sizeG1, true);
-        setVisibility(c, sizeC, true);
-        setVisibility(h, sizeH, true);
-        setVisibility(alpha, sizeAlpha, true);
-        setVisibility(beta, sizeBeta, true);
+        setVisibilityLabel(true, s, b, e, g, e1, g1, c, h, alpha, beta);
+        setVisibilitySpinner(true, sizeS, sizeB, sizeE, sizeG, sizeE1, sizeG1, sizeC, sizeH, sizeAlpha, sizeBeta);
 
-        setVisibility(r, sizeR, false);
-        setVisibility(k, sizeK, false);
-        setVisibility(k1, sizeK1, false);
+        setVisibilityLabel(false, r, k, k1);
+        setVisibilitySpinner(false, sizeR, sizeK, sizeK1);
     }
 
     private void visibility_S_b_e_g_e1_g1_c_h_R_alpha_beta() {
-        setVisibility(s, sizeS, true);
-        setVisibility(b, sizeB, true);
-        setVisibility(e, sizeE, true);
-        setVisibility(g, sizeG, true);
-        setVisibility(e1, sizeE1, true);
-        setVisibility(g1, sizeG1, true);
-        setVisibility(c, sizeC, true);
-        setVisibility(h, sizeH, true);
-        setVisibility(r, sizeR, true);
-        setVisibility(alpha, sizeAlpha, true);
-        setVisibility(beta, sizeBeta, true);
+        setVisibilityLabel(true, s, b, e, g, e1, g1, c, h, r, alpha, beta);
+        setVisibilitySpinner(true, sizeS, sizeB, sizeE, sizeG, sizeE1, sizeG1, sizeC, sizeH, sizeR, sizeAlpha, sizeBeta);
 
-        setVisibility(k, sizeK, false);
-        setVisibility(k1, sizeK1, false);
+        setVisibilityLabel(false, k, k1);
+        setVisibilitySpinner(false, sizeK, sizeK1);
     }
 
     private void visibility_S_b_k() {
-        setVisibility(s, sizeS, true);
-        setVisibility(b, sizeB, true);
-        setVisibility(k, sizeK, true);
+        setVisibilityLabel(true, s, b, k);
+        setVisibilitySpinner(true, sizeS, sizeB, sizeK);
 
-        setVisibility(e, sizeE, false);
-        setVisibility(g, sizeG, false);
-        setVisibility(e1, sizeE1, false);
-        setVisibility(g1, sizeG1, false);
-        setVisibility(c, sizeC, false);
-        setVisibility(h, sizeH, false);
-        setVisibility(r, sizeR, false);
-        setVisibility(alpha, sizeAlpha, false);
-        setVisibility(beta, sizeBeta, false);
-        setVisibility(k1, sizeK1, false);
+        setVisibilityLabel(false, e, g, g1, e1, c, h, r, alpha, beta, k1);
+        setVisibilitySpinner(false, sizeE, sizeG, sizeG1, sizeE1, sizeC, sizeH, sizeR, sizeAlpha, sizeBeta, sizeK1);
     }
 
     private void visibility_S_b_c_k() {
-        setVisibility(s, sizeS, true);
-        setVisibility(b, sizeB, true);
-        setVisibility(c, sizeC, true);
-        setVisibility(k, sizeK, true);
+        setVisibilityLabel(true, s, b, c, k);
+        setVisibilitySpinner(true, sizeS, sizeB, sizeC, sizeK);
 
-        setVisibility(e, sizeE, false);
-        setVisibility(g, sizeG, false);
-        setVisibility(e1, sizeE1, false);
-        setVisibility(g1, sizeG1, false);
-        setVisibility(h, sizeH, false);
-        setVisibility(r, sizeR, false);
-        setVisibility(alpha, sizeAlpha, false);
-        setVisibility(beta, sizeBeta, false);
-        setVisibility(k1, sizeK1, false);
+        setVisibilityLabel(false, e, g, g1, e1, h, r, alpha, beta, k1);
+        setVisibilitySpinner(false, sizeE, sizeG, sizeG1, sizeE1, sizeH, sizeR, sizeAlpha, sizeBeta, sizeK1);
     }
 
     private void visibility_S_b_c_k_k1() {
-        setVisibility(s, sizeS, true);
-        setVisibility(b, sizeB, true);
-        setVisibility(c, sizeC, true);
-        setVisibility(k, sizeK, true);
-        setVisibility(k1, sizeK1, true);
+        setVisibilityLabel(true, s, b, c, k, k1);
+        setVisibilitySpinner(true, sizeS, sizeB, sizeC, sizeK, sizeK1);
 
-        setVisibility(e, sizeE, false);
-        setVisibility(g, sizeG, false);
-        setVisibility(e1, sizeE1, false);
-        setVisibility(g1, sizeG1, false);
-        setVisibility(h, sizeH, false);
-        setVisibility(r, sizeR, false);
-        setVisibility(alpha, sizeAlpha, false);
-        setVisibility(beta, sizeBeta, false);
+        setVisibilityLabel(false, e, g, g1, e1, h, r, alpha, beta);
+        setVisibilitySpinner(false, sizeE, sizeG, sizeG1, sizeE1, sizeH, sizeR, sizeAlpha, sizeBeta);
     }
 
     private void visibility_k() {
-        setVisibility(k, sizeK, true);
+        setVisibilityLabel(true, k);
+        setVisibilitySpinner(true, sizeK);
 
-        setVisibility(s, sizeS, false);
-        setVisibility(b, sizeB, false);
-        setVisibility(e, sizeE, false);
-        setVisibility(g, sizeG, false);
-        setVisibility(e1, sizeE1, false);
-        setVisibility(g1, sizeG1, false);
-        setVisibility(c, sizeC, false);
-        setVisibility(h, sizeH, false);
-        setVisibility(r, sizeR, false);
-        setVisibility(k1, sizeK1, false);
-        setVisibility(alpha, sizeAlpha, false);
-        setVisibility(beta, sizeBeta, false);
+        setVisibilityLabel(false, s, b, e, g, g1, e1, c, h, r, alpha, beta, k1);
+        setVisibilitySpinner(false, sizeS, sizeB, sizeE, sizeG, sizeG1, sizeE1, sizeC, sizeH, sizeR, sizeAlpha, sizeBeta, sizeK1);
     }
 
     //методы показывают только те кнопки, которые необходимы для расчета
@@ -2328,7 +2145,7 @@ public class CalculatorGUI extends JFrame {
         visibility_k();
     }
 
-    //когда пользователь выбирает вкладку с типом сварного соединения, его все перекидывает на первую вкладку
+    //когда пользователь выбирает вкладку с типом сварного соединения, его всегда перекидывает на первую вкладку
     private void buttJointsComponentShown(ComponentEvent evt) {
         buttJoints.setSelectedIndex(0);
         visibility_S_b_e_g();

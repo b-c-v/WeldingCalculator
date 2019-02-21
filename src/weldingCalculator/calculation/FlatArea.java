@@ -1,7 +1,9 @@
 package weldingCalculator.calculation;
 
+/*21.02.19 add strictfp is a keyword in java used for restricting floating-point calculations and
+ensuring same result on every platform while performing operations in the floating-point variable*/
 
-public final class FlatArea {
+public final strictfp class FlatArea {
     public static double c1_c2_c3_c5_c6_y1(double S, double b, double e, double g) {
         return S * b + 0.75 * e * g;
     }
